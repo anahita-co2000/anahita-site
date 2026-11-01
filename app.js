@@ -34,7 +34,7 @@
 
   /* water journey: the one orchestrated moment on the home page */
   var svg=$('#scene');
-  if(svg){
+  if(svg&&!window.__gl){
     var trail=$('#trail',svg),drop=$('#drop',svg),labels=[].slice.call(svg.querySelectorAll('[data-at]'));
     var L=trail.getTotalLength();
     trail.style.strokeDasharray=L;

@@ -152,3 +152,24 @@ footer small{color:var(--muted)}
 .chat small{display:block;text-align:center;font-size:.7rem;color:var(--muted);padding:0 0 8px}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* 3D hero (progressive enhancement: the SVG scene stays as fallback) */
+.gl-wrap{display:none}
+.hero.gl-on{position:relative;min-height:clamp(600px,calc(100vh - 66px),820px);display:flex;align-items:center;padding-top:0;overflow:hidden}
+.hero.gl-on::before{content:"";position:absolute;left:-6%;top:50%;width:min(62vw,820px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:#EAF2EE}
+.hero.gl-on .gl-wrap{display:block;position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero.gl-on .scene-wrap{display:none}
+.hero.gl-on .hero-copy{position:relative;z-index:2;width:100%;padding-top:48px;padding-bottom:48px}
+.hero.gl-on .hero-copy>*{max-width:min(25em,34vw)}
+.hero.gl-on h1{font-size:clamp(1.9rem,3.6vw,3rem)}
+.gl-wrap canvas{width:100%;height:100%;display:block}
+.tag{position:absolute;left:0;top:0;white-space:nowrap;font-size:.78rem;font-weight:600;background:var(--paper);color:var(--ink);padding:2px 11px;border-radius:999px;border:1px solid var(--rule);will-change:transform}
+.tag::after{content:"";position:absolute;left:50%;bottom:-9px;width:1px;height:9px;background:var(--ink)}
+@media (max-width:760px){
+  .hero.gl-on .hero-copy>*{max-width:none}
+  .hero.gl-on{display:block;min-height:0}
+  .hero.gl-on::before{display:none}
+  .hero.gl-on .hero-copy{padding-top:36px;padding-bottom:12px}
+  .hero.gl-on .gl-wrap{position:relative;height:min(92vw,470px);min-height:320px}
+  .tag{font-size:.68rem;padding:1px 8px}
+}
